@@ -1,18 +1,39 @@
-//Global Variables
-
-
+//Global Variabiables 
+var searchButton = document.querySelector(".button");
+var userInput = document.querySelector(".textarea");
 
 //Capture User Input - submit button 
-
+searchButton.addEventListener("click", function () {
+    console.log("search button clicked");
+    console.log(userInput.value);
+    var textTerm = userInput.value;
+    sendToText(textTerm);
+})
 
 
 //Save User Input in local storage
 
 
 //send User Input to text analyzer 
+sendToText = function (searchTerm) {
+    //return analyzed text key word
+    fetch("https://aylien-text.p.rapidapi.com/concepts?text="+searchTerm+"&language=en", {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "d8b02f9ee6mshafd2f4ddfa99997p12a03cjsn241b3ee6e0ac",
+            "x-rapidapi-host": "aylien-text.p.rapidapi.com"
+        }
+    })
+        .then(response => {
+            return response.json();
+        }).then(data => {
+            console.log(data);
+        })
+        .catch(err => {
+            console.error(err);
+        });
+}
 
-
-//return analyzed text key word
 
 
 //save Analyzed text key word to local storage
