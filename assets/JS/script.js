@@ -1,6 +1,8 @@
 //Global Variabiables 
 var searchButton = document.querySelector(".button");
 var userInput = document.querySelector(".textarea");
+var ronQuote = document.querySelector("#ronQuote");
+
 
 //Capture User Input - submit button 
 searchButton.addEventListener("click", function () {
@@ -8,6 +10,7 @@ searchButton.addEventListener("click", function () {
     console.log(userInput.value);
     var textTerm = userInput.value;
     sendToText(textTerm);
+    sendToRon();
 })
 
 
@@ -17,7 +20,7 @@ searchButton.addEventListener("click", function () {
 //send User Input to text analyzer 
 sendToText = function (searchTerm) {
     //return analyzed text key word
-    fetch("https://aylien-text.p.rapidapi.com/concepts?text="+searchTerm+"&language=en", {
+    fetch("https://aylien-text.p.rapidapi.com/concepts?text=" + searchTerm + "&language=en", {
         "method": "GET",
         "headers": {
             "x-rapidapi-key": "d8b02f9ee6mshafd2f4ddfa99997p12a03cjsn241b3ee6e0ac",
@@ -27,7 +30,21 @@ sendToText = function (searchTerm) {
         .then(response => {
             return response.json();
         }).then(data => {
+            console.log("textapi");
             console.log(data);
+        })
+        .catch(err => {
+            console.error(err);
+        });
+}
+sendToRon = function (searchRon) {
+    fetch("https://ron-swanson-quotes.herokuapp.com/v2/quotes") 
+        .then(response => {
+            return response.json();
+        }).then(data => {
+            console.log("ron api");
+            console.log(data);
+            ronQuote.textContent = data;
         })
         .catch(err => {
             console.error(err);
