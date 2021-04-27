@@ -7,6 +7,7 @@ var okayBtn = document.querySelector("#okayBtn");
 
 //--------------------------Capture User Input - submit button----------------
 searchButton.addEventListener("click", function () {
+    //condition to activate modal
   if (userInput.value.length <= 25) {
     let modalClass = document.getElementById("characterAlert");
     modalClass.classList.remove("modal");
@@ -15,6 +16,8 @@ searchButton.addEventListener("click", function () {
       modalClass.classList.remove("modal.is-active");
       modalClass.classList.add("modal");
     });
+
+    //if characters are > 25
   } else {
     console.log("search button clicked");
     console.log(userInput.value);
@@ -68,7 +71,8 @@ sendToRon = function (searchRon) {
       console.log("ron api");
       console.log(data);
       ronQuote.textContent =
-        "This is what Ron says about your Dream: " + '"' + data + '"';
+        "This is what Ron says about your Dream:" + '' + data + '"';
+        //TODO:  add line break above
     })
     .catch((err) => {
       console.error(err);
@@ -79,7 +83,8 @@ sendToRon = function (searchRon) {
 /* TODO:    Take values out of local store to append to cards */
 
 /*TODO items
- *76 - cards
- *50 - local storage junk
- *10 - modal
+ * - cards
+ * - local storage junk
+ * - modal can't move up the page
+ *  -need ron quote line breaks
  */
