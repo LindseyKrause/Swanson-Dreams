@@ -3,6 +3,7 @@ var searchButton = document.querySelector(".button");
 var userInput = document.querySelector(".textarea");
 var ronQuote = document.querySelector("#ronQuote");
 var keywordReturn = "";
+var textTerm = "";
 
 //Capture User Input - submit button 
 searchButton.addEventListener("click", function () {
@@ -54,11 +55,21 @@ sendToRon = function (searchRon) {
         .catch(err => {
             console.error(err);
         });
+        var userInputObj = {
+            dream:  textTerm,
+            keyword: keywordReturn,
+            ronQ: ronQuote.textContent,
+            }
+            //Save User Input in local storage
+            function saveItems () {
+            localStorage.setItem('userReturnObj', JSON.stringify(userInputObj));
+            userReturnObj = localStorage.getItem('userReturnObj');
+            userReturnObj = JSON.parse(localStorage.getItem('userReturnObj'));
+            console.log(userReturnObj);
+            }
+            saveItems();
+            
 }
-
-//Save User Input in local storage
-
-
 //save Analyzed text key word to local storage
 
 
