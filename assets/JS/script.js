@@ -3,12 +3,18 @@ var searchButton = document.querySelector(".button");
 var userInput = document.querySelector(".textarea");
 var ronQuote = document.querySelector("#ronQuote");
 var keywordReturn = "";
+var okayBtn = document.querySelector("#okayBtn");
 
 //--------------------------Capture User Input - submit button----------------
 searchButton.addEventListener("click", function () {
   if (userInput.value.length <= 25) {
- //TODO:-----------------   //we need a modal!
-    alert("Don't forget to add a modal and delete this alert");
+    let modalClass = document.getElementById("characterAlert");
+    modalClass.classList.remove("modal");
+    modalClass.classList.add("modal.is-active");
+    okayBtn.addEventListener("click", function () {
+      modalClass.classList.remove("modal.is-active");
+      modalClass.classList.add("modal");
+    });
   } else {
     console.log("search button clicked");
     console.log(userInput.value);
@@ -49,9 +55,6 @@ sendToText2 = function (searchTerm) {
 //--------------------------Add to search History---------------------------------
 /* TODO:    Figure out how to pull objects and arrays out of local storage */
 
-
-
-
 //--------------------Return Quote from Ron Function------------------------
 sendToRon = function (searchRon) {
   fetch(
@@ -75,9 +78,8 @@ sendToRon = function (searchRon) {
 //--------------------------Append Cards with Search History---------------------------------
 /* TODO:    Take values out of local store to append to cards */
 
-
 /*TODO items
-*76 - cards 
-*50 - local storage junk
-*10 - modal
-*/
+ *76 - cards
+ *50 - local storage junk
+ *10 - modal
+ */
