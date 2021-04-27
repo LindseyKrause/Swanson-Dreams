@@ -1,75 +1,83 @@
-//Global Variabiables 
+//--------------------------------Global Variables---------------------------
 var searchButton = document.querySelector(".button");
 var userInput = document.querySelector(".textarea");
 var ronQuote = document.querySelector("#ronQuote");
 var keywordReturn = "";
 
-//Capture User Input - submit button 
+//--------------------------Capture User Input - submit button----------------
 searchButton.addEventListener("click", function () {
-    if (userInput.value.length <= 25) {
-alert("Please enter more than 25 characters");
-    }
-    else {
+  if (userInput.value.length <= 25) {
+ //TODO:-----------------   //we need a modal!
+    alert("Don't forget to add a modal and delete this alert");
+  } else {
     console.log("search button clicked");
     console.log(userInput.value);
     var textTerm = userInput.value;
     // sendToText(textTerm);
     sendToRon();
     sendToText2(textTerm);
-}})
+  }
+});
 
+//--------------------Function to send text to text analyser---------------------
 sendToText2 = function (searchTerm) {
-    fetch("https://aylien-text.p.rapidapi.com/entities?text=" + searchTerm + "&language=en", {
-        "method": "GET",
-        "headers": {
-            "x-rapidapi-key": "d8b02f9ee6mshafd2f4ddfa99997p12a03cjsn241b3ee6e0ac",
-            "x-rapidapi-host": "aylien-text.p.rapidapi.com"
-        }
+  fetch(
+    "https://aylien-text.p.rapidapi.com/entities?text=" +
+      searchTerm +
+      "&language=en",
+    {
+      method: "GET",
+      headers: {
+        "x-rapidapi-key": "d8b02f9ee6mshafd2f4ddfa99997p12a03cjsn241b3ee6e0ac",
+        "x-rapidapi-host": "aylien-text.p.rapidapi.com",
+      },
+    }
+  )
+    .then((response) => {
+      return response.json();
     })
-    .then(response => {
-        return response.json();
+    .then((data) => {
+      keywordReturn = data.entities.keyword[0];
+      console.log(keywordReturn + "!");
+      //save Analyzed text key word to local storage
+      localStorage.setItem("value", keywordReturn, "stop");
     })
-        .then(data => {
-            console.log("text api 2");
-            keywordReturn = data.entities.keyword[0];
-            console.log(keywordReturn + "!");
-        })
-        // var keyword = data.entities;
-        // console.log(keyword);
-        .catch(err => {
-            console.error(err);
-        });
-        // let entity = data.entities.keyword[0];
-        // console.log(entity);
-}
+    .catch((err) => {
+      console.error(err);
+    });
+};
+//--------------------------Add to search History---------------------------------
+/* TODO:    Figure out how to pull objects and arrays out of local storage */
+
+
+
+
+//--------------------Return Quote from Ron Function------------------------
 sendToRon = function (searchRon) {
-    fetch("https://ron-swanson-quotes.herokuapp.com/v2/quotes/search?q=" + keywordReturn)
-        .then(response => {
-            return response.json();
-        }).then(data => {
-            console.log("ron api");
-            console.log(data);
-            ronQuote.textContent = 'This is what Ron says about your Dream: ' + '"' + data + '"';
-        })
-        .catch(err => {
-            console.error(err);
-        });
-}
+  fetch(
+    "https://ron-swanson-quotes.herokuapp.com/v2/quotes/search?q=" +
+      keywordReturn
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log("ron api");
+      console.log(data);
+      ronQuote.textContent =
+        "This is what Ron says about your Dream: " + '"' + data + '"';
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
 
-//Save User Input in local storage
-
-
-//save Analyzed text key word to local storage
-
-
-//send keyword to Ron quotes API
-
-
-//return Ron quote
+//--------------------------Append Cards with Search History---------------------------------
+/* TODO:    Take values out of local store to append to cards */
 
 
-//save Ron Quote to local storage
-
-
-
-//append Ron quote to new quote area
+/*TODO items
+*76 - cards 
+*50 - local storage junk
+*10 - modal
+*/
