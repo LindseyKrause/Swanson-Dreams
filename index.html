@@ -24,14 +24,14 @@
             <!--Hero Section-->
             <section class="hero">
                 <div class="hero-body">
-                    <p class="title">What would Ron Swanson Say About Your Dreams?</p>
+                    <p class="title">SWANSON DREAMS</p>
                     < /br>
                         <p class="subtitle">Dream Analyzer</p>
                 </div>
             </section>
 
             <!------------Instructions for user---------->
-            <div class="box">
+            <div id= "introBox" class="box">
                 <p id="instructions" class="instructions">
                 <H1> Welcome to Swanson Dreams</H1>
                 <p> Ever wonder what Ron Swanson would say about your dreams?</p>
@@ -39,30 +39,21 @@
                 <p> Make sure to enter at a dream that is at least 25 characters</p>
                 </p>
             </div>
+            
 
-            <!--new Quote - Ron Quote Returned-->
-            <div id="ronBox" class="box content">
-                <h2 id="ronQuote"></h2>
-                <h3 id="ronSays"></h3>
-                <img src="assets/images/nickoffermanpr.jpeg" />
-            </div>
-
-            <!--user input box-->
-            <textarea class="textarea" placeholder="10 lines of textarea" rows="10">
-              
-            </textarea>
+              <!-----------------user input box------------------------------------>
+              <div id = "userBox"  class="box">
+              <textarea id="textArea" class="textarea" placeholder="Enter your dream here for Ron to evaluate for you!" rows="6"></textarea >
             <div class="buttons">
                 <button class="button is-primary is-light">Submit</button>
             </div>
-        </div>
 
-        <!-- -----Alert Modal -->
+            <!-- -----------------Alert Modal----------------- -->
         <div class="modal" id="characterAlert">
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
-                    <p class="modal-card-title">Hold on</p>
-                    <button class="delete" aria-label="close"></button>
+                    <p class="modal-card-title">Hold On!</p>
                 </header>
                 <section class="modal-card-body">
                     Any dream under 25 characters is a Veggie Burger, and Veggie Burgers are useless. Make it at least
@@ -72,18 +63,38 @@
                     <button id="okayBtn" class="button is-success">Okay</button>
                 </footer>
             </div>
+         </div>
+         
         </div>
+
+            <!-----------new Quote - Ron Quote Returned------------------->
+            <div id="ronBox" class="box content">
+                <h3 id="ronSays"></h3>
+                <h2 id="ronQuote"></h2>
+                <img src="assets/images/nickoffermanpr.jpeg" />
+            </div>
+
+            
+            
+
+        
 <!---------------Local Storage Cards -------------------->
 <div class="box" id="cardContainer">
-    <h1 class="title">Previous Entries</h1>
+    <h2 class="title">Previous Entries</h2>
 </div>
-        <!--Footer Section-->
+
+</div>
+
+
+        <!----------Footer Section----------->
         <footer class="footer">
             <div class="content has-text-centered">
                 <p><strong>Swanson Dreams</strong> Made by Us</p>
                 <button id="clearBtn" class="button is-warning">Clear Local Storage</button>
             </div>
         </footer>
+
+        
 
         <!--js assets-->
         <script src="assets/JS/script.js"></script>
