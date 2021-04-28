@@ -6,6 +6,7 @@ var ronQuote = document.querySelector("#ronQuote");
 var ronSays = document.querySelector("#ronSays");
 var keywordReturn = "";
 var okayBtn = document.querySelector("#okayBtn");
+var clearBtn = document.querySelector("#clearBtn");
 var textTerm = "";
 
 
@@ -112,6 +113,10 @@ function saveItems() {
 
 }
 
+clearBtn.addEventListener("click", function () {
+  localStorage.clear();
+  clearBtn.innerHTML = "Local Storage Cleared";
+});
 
 
  //* - modal can't move up the page
