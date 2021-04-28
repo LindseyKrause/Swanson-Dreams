@@ -2,12 +2,15 @@
 var searchButton = document.querySelector(".button");
 var userInput = document.querySelector(".textarea");
 var ronQuote = document.querySelector("#ronQuote");
+var ronSays = document.querySelector("#ronSays");
 var keywordReturn = "";
 var okayBtn = document.querySelector("#okayBtn");
+var textTerm = "";
+
 
 //--------------------------Capture User Input - submit button----------------
 searchButton.addEventListener("click", function () {
-    //condition to activate modal
+  //condition to activate modal
   if (userInput.value.length <= 25) {
     let modalClass = document.getElementById("characterAlert");
     modalClass.classList.remove("modal");
@@ -19,17 +22,13 @@ searchButton.addEventListener("click", function () {
 
     //if characters are > 25
   } else {
-    console.log("search button clicked");
-    console.log(userInput.value);
-    var textTerm = userInput.value;
-    // sendToText(textTerm);
-    sendToRon();
-    sendToText2(textTerm);
+    textTerm = userInput.value;
+    sendToTextAnalysis(textTerm);
   }
 });
 
 //--------------------Function to send text to text analyser---------------------
-sendToText2 = function (searchTerm) {
+sendToTextAnalysis = function (searchTerm) {
   fetch(
     "https://aylien-text.p.rapidapi.com/entities?text=" +
       searchTerm +
@@ -46,20 +45,18 @@ sendToText2 = function (searchTerm) {
       return response.json();
     })
     .then((data) => {
+      console.log(data);
       keywordReturn = data.entities.keyword[0];
-      console.log(keywordReturn + "!");
-      //save Analyzed text key word to local storage
-      localStorage.setItem("value", keywordReturn, "stop");
+      sendToRon();
     })
     .catch((err) => {
       console.error(err);
     });
 };
-//--------------------------Add to search History---------------------------------
-/* TODO:    Figure out how to pull objects and arrays out of local storage */
 
 //--------------------Return Quote from Ron Function------------------------
-sendToRon = function (searchRon) {
+
+sendToRon = function () {
   fetch(
     "https://ron-swanson-quotes.herokuapp.com/v2/quotes/search?q=" +
       keywordReturn
@@ -68,16 +65,34 @@ sendToRon = function (searchRon) {
       return response.json();
     })
     .then((data) => {
-      console.log("ron api");
-      console.log(data);
       ronQuote.textContent =
-        "This is what Ron says about your Dream:" + '' + data + '"';
-        //TODO:  add line break above
+        "This is what Ron says about your Dream:";
+        ronSays.textContent = `"${data}"`;
+        
+      saveItems();
+      //TODO:  add line break above
     })
     .catch((err) => {
       console.error(err);
     });
 };
+
+//--------------------------Add to search History---------------------------------
+/* TODO:    Figure out how to pull objects and arrays out of local storage */
+function saveItems() {
+  userReturnObj = JSON.parse(localStorage.getItem("userReturnObj"));
+  var userInputObj = [
+    {
+      dream: textTerm,
+      keyword: keywordReturn,
+      ronQ: ronQuote.textContent,
+    },
+  ];
+  localStorage.setItem(
+    "userReturnObj",
+    JSON.stringify(userInputObj.concat(userReturnObj))
+  );
+}
 
 //--------------------------Append Cards with Search History---------------------------------
 /* TODO:    Take values out of local store to append to cards */
