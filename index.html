@@ -1,90 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--Style Sheets-->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.min.css"
-      integrity="sha512-byErQdWdTqREz6DLAA9pCnLbdoGGhXfU6gm1c8bkf7F51JVmUBlayGe2A31VpXWQP+eiJ3ilTAZHCR3vmMyybA=="
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.min.css"
+        integrity="sha512-byErQdWdTqREz6DLAA9pCnLbdoGGhXfU6gm1c8bkf7F51JVmUBlayGe2A31VpXWQP+eiJ3ilTAZHCR3vmMyybA=="
+        crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/styles/style.css" />
     <!--title-->
     <title>Swanson Dreams</title>
-  </head>
+</head>
 
-  <body>
-      
+<body>
+
     <!----------Main--------------------->
     <main class="section">
-      <div class="container">
-  
+        <div class="container">
 
-        <!--Hero Section-->
-        <section class="hero">
-          <div class="hero-body">
-            <p class="title">What would Ron Swanson Say About Your Dreams?</p>
-            < /br>
-            <p class="subtitle">Dream Analyzer</p>
-          </div>
-        </section>
 
-        <!------------Instructions for user---------->
-        <div class="box">
-          <p id="instructions" class="instructions">
-            <H1> Welcome to Swanson Dreams</H1> 
-            <p>  Ever wonder what Ron Swanson would say about your dreams?</p>
-            <p>  Enter your dream in the box below to find out!</p>
-            <p>  Make sure to enter at a dream that is at least 25 characters</p>
-          </p>
+            <!--Hero Section-->
+            <section class="hero">
+                <div class="hero-body">
+                    <p class="title">What would Ron Swanson Say About Your Dreams?</p>
+                    < /br>
+                        <p class="subtitle">Dream Analyzer</p>
+                </div>
+            </section>
+
+            <!------------Instructions for user---------->
+            <div class="box">
+                <p id="instructions" class="instructions">
+                <H1> Welcome to Swanson Dreams</H1>
+                <p> Ever wonder what Ron Swanson would say about your dreams?</p>
+                <p> Enter your dream in the box below to find out!</p>
+                <p> Make sure to enter at a dream that is at least 25 characters</p>
+                </p>
+            </div>
+
+            <!--new Quote - Ron Quote Returned-->
+            <div id="ronBox" class="box content">
+                <h2 id="ronQuote"></h2>
+                <h3 id="ronSays"></h3>
+                <img src="assets/images/nickoffermanpr.jpeg" />
+            </div>
+
+            <!--user input box-->
+            <textarea class="textarea" placeholder="10 lines of textarea" rows="10"></textarea>
+            <div class="buttons">
+                <button class="button is-primary is-light">Submit</button>
+            </div>
         </div>
 
-        <!--new Quote - Ron Quote Returned-->
-        <div id="ronBox" class="box content">
-          <h2 id="ronQuote"></h2>
-          <h3 id="ronSays"></h3>
-          <img src="assets/images/nickoffermanpr.jpeg" />
+        <!-- -----Alert Modal -->
+        <div class="modal" id="characterAlert">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Hold on</p>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    Any dream under 25 characters is a Veggie Burger, and Veggie Burgers are useless. Make it at least
+                    25 characters, preferably including Bacon.
+                </section>
+                <footer class="modal-card-foot">
+                    <button id="okayBtn" class="button is-success">Okay</button>
+                </footer>
+            </div>
         </div>
+<!---------------Local Storage Cards -------------------->
+<div class="box" id="cardContainer">
+    <h1 class="title">Previous Entries</h1>
+</div>
+        <!--Footer Section-->
+        <footer class="footer">
+            <div class="content has-text-centered">
+                <p><strong>Swanson Dreams</strong> Made by Us</p>
+            </div>
+        </footer>
 
-        <!--user input box-->
-        <textarea
-          class="textarea"
-          placeholder="10 lines of textarea"
-          rows="10"
-        ></textarea>
-        <div class="buttons">
-          <button class="button is-primary is-light">Submit</button>
-        </div>
-      </div>
+        <!--js assets-->
+        <script src="assets/JS/script.js"></script>
+</body>
 
-      <!-- -----Alert Modal -->
-      <div class="modal" id="characterAlert">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-          <header class="modal-card-head">
-            <p class="modal-card-title">Hold on</p>
-            <button class="delete" aria-label="close"></button>
-          </header>
-          <section class="modal-card-body">
-           Any dream under 25 characters is a Veggie Burger, and Veggie Burgers are useless. Make it at least 25 characters, preferably including Bacon.
-          </section>
-          <footer class="modal-card-foot">
-            <button id="okayBtn" class="button is-success">Okay</button>
-          </footer>
-        </div>
-      </div>
-
-    <!--Footer Section-->
-    <footer class="footer">
-      <div class="content has-text-centered">
-        <p><strong>Swanson Dreams</strong> Made by Us</p>
-      </div>
-    </footer>
-
-    <!--js assets-->
-    <script src="assets/JS/script.js"></script>
-  </body>
 </html>
