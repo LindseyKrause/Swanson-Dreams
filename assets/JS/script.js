@@ -2,24 +2,24 @@
 var searchButton = document.querySelector(".button");
 var userInput = document.querySelector(".textarea");
 var ronQuote = document.querySelector("#ronQuote");
-var keywordReturn = "";
-var textTerm = "";
+var keywordReturn = '';
+var textTerm = '';
 
 //Capture User Input - submit button 
 searchButton.addEventListener("click", function () {
     if (userInput.value.length <= 25) {
-alert("Please enter more than 25 characters");
+        alert("Please enter more than 25 characters");
     }
     else {
-    console.log("search button clicked");
-    console.log(userInput.value);
-    var textTerm = userInput.value;
-    // sendToText(textTerm);
-    sendToRon();
-    sendToText2(textTerm);
-}})
+        console.log("search button clicked");
+        console.log(userInput.value);
+        textTerm = userInput.value;
+        // sendToText(textTerm);
+        sendToTextAnalysis(textTerm);
+    }
+})
 
-sendToText2 = function (searchTerm) {
+sendToTextAnalysis = function (searchTerm) {
     fetch("https://aylien-text.p.rapidapi.com/entities?text=" + searchTerm + "&language=en", {
         "method": "GET",
         "headers": {
@@ -27,49 +27,43 @@ sendToText2 = function (searchTerm) {
             "x-rapidapi-host": "aylien-text.p.rapidapi.com"
         }
     })
-    .then(response => {
-        return response.json();
-    })
-        .then(data => {
-            console.log("text api 2");
-            keywordReturn = data.entities.keyword[0];
-            console.log(keywordReturn + "!");
+        .then(response => {
+            return response.json();
         })
-        // var keyword = data.entities;
-        // console.log(keyword);
+        .then(data => {
+            keywordReturn = data.entities.keyword[0];
+            sendToRon();
+        })
         .catch(err => {
             console.error(err);
         });
-        // let entity = data.entities.keyword[0];
-        // console.log(entity);
 }
-sendToRon = function (searchRon) {
+sendToRon = function () {
     fetch("https://ron-swanson-quotes.herokuapp.com/v2/quotes/search?q=" + keywordReturn)
         .then(response => {
             return response.json();
         }).then(data => {
-            console.log("ron api");
-            console.log(data);
             ronQuote.textContent = 'This is what Ron says about your Dream: ' + '"' + data + '"';
+            saveItems();
         })
         .catch(err => {
             console.error(err);
         });
-        var userInputObj = {
-            dream:  textTerm,
-            keyword: keywordReturn,
-            ronQ: ronQuote.textContent,
-            }
-            //Save User Input in local storage
-            function saveItems () {
-            localStorage.setItem('userReturnObj', JSON.stringify(userInputObj));
-            userReturnObj = localStorage.getItem('userReturnObj');
-            userReturnObj = JSON.parse(localStorage.getItem('userReturnObj'));
-            console.log(userReturnObj);
-            }
-            saveItems();
-            
+
+
 }
+//Save User Input in local storage
+function saveItems() {
+    userReturnObj = JSON.parse(localStorage.getItem('userReturnObj'));
+    var userInputObj = [{
+        dream: textTerm,
+        keyword: keywordReturn,
+        ronQ: ronQuote.textContent,
+    }]
+    localStorage.setItem('userReturnObj', JSON.stringify(userInputObj.concat(userReturnObj)));
+}
+
+
 //save Analyzed text key word to local storage
 
 
