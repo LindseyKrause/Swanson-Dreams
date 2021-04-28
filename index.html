@@ -31,7 +31,7 @@
             </section>
 
             <!------------Instructions for user---------->
-            <div id= "introBox" class="box">
+            <div id="introBox" class="box">
                 <p id="instructions" class="instructions">
                 <H1> Welcome to Swanson Dreams</H1>
                 <p> Ever wonder what Ron Swanson would say about your dreams?</p>
@@ -39,33 +39,35 @@
                 <p> Make sure to enter at a dream that is at least 25 characters</p>
                 </p>
             </div>
-            
 
-              <!-----------------user input box------------------------------------>
-              <div id = "userBox"  class="box">
-              <textarea id="textArea" class="textarea" placeholder="Enter your dream here for Ron to evaluate for you!" rows="6"></textarea >
-            <div class="buttons">
-                <button class="button is-primary is-light">Submit</button>
-            </div>
 
-            <!-- -----------------Alert Modal----------------- -->
-        <div class="modal" id="characterAlert">
-            <div class="modal-background"></div>
-            <div class="modal-card">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">Hold On!</p>
-                </header>
-                <section class="modal-card-body">
-                    Any dream under 25 characters is a Veggie Burger, and Veggie Burgers are useless. Make it at least
-                    25 characters, preferably including Bacon.
-                </section>
-                <footer class="modal-card-foot">
-                    <button id="okayBtn" class="button is-success">Okay</button>
-                </footer>
+            <!-----------------user input box------------------------------------>
+            <div id="userBox" class="box">
+                <textarea id="textArea" class="textarea"
+                    placeholder="Enter your dream here for Ron to evaluate for you!" rows="6"></textarea>
+                <div class="buttons">
+                    <button class="button is-primary"> Submit </button>
+                </div>
+
+                <!-- -----------------Alert Modal----------------- -->
+                <div class="modal" id="characterAlert">
+                    <div class="modal-background"></div>
+                    <div class="modal-card">
+                        <header class="modal-card-head">
+                            <p class="modal-card-title">Hold On!</p>
+                        </header>
+                        <section class="modal-card-body">
+                            Any dream under 25 characters is a Veggie Burger, and Veggie Burgers are useless. Make it at
+                            least
+                            25 characters, preferably including Bacon.
+                        </section>
+                        <footer class="modal-card-foot">
+                            <button id="okayBtn" class="button is-success">Okay</button>
+                        </footer>
+                    </div>
+                </div>
+
             </div>
-         </div>
-         
-        </div>
 
             <!-----------new Quote - Ron Quote Returned------------------->
             <div id="ronBox" class="box content">
@@ -74,16 +76,16 @@
                 <img src="assets/images/nickoffermanpr.jpeg" />
             </div>
 
-            
-            
 
-        
-<!---------------Local Storage Cards -------------------->
-<div class="box" id="cardContainer">
-    <h2 class="title">Previous Entries</h2>
-</div>
 
-</div>
+
+
+            <!---------------Local Storage Cards -------------------->
+            <div class="box" id="cardContainer">
+                <h2 class="title">Previous Entries</h2>
+            </div>
+
+        </div>
 
 
         <!----------Footer Section----------->
@@ -94,7 +96,7 @@
             </div>
         </footer>
 
-        
+
 
         <!--js assets-->
         <script src="assets/JS/script.js"></script>

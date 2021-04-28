@@ -1,5 +1,10 @@
 * {
   text-align: center;
+  scroll-behavior: unset;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -30,10 +35,10 @@ body {
 }
 
 .modal-card-title {
-    font-weight: bold;
-    align-items: center;
-    color: red;
-  }
+  font-weight: bold;
+  align-items: center;
+  color: red;
+}
 
 .modal-card-body {
   font-weight: bold;
@@ -69,18 +74,18 @@ body {
 }
 
 .box h2 {
-    font-weight: bolder;
-    font-size: xx-large;
-    font-family: helvetica, Arial, sans-serif;
-    color: #7510f7;
-  }
+  font-weight: bolder;
+  font-size: xx-large;
+  font-family: helvetica, Arial, sans-serif;
+  color: #7510f7;
+}
 
-  .box h3 {
-    font-weight: bolder;
-    font-size: xxx-large;
-    font-family: helvetica, Arial, sans-serif;
-    color: black;
-  }
+.box h3 {
+  font-weight: bolder;
+  font-size: xxx-large;
+  font-family: helvetica, Arial, sans-serif;
+  color: black;
+}
 
 .box p {
   font-weight: bolder;
