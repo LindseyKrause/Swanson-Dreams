@@ -1,0 +1,101 @@
+* {
+  text-align: center;
+  scroll-behavior: unset;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+.hero {
+  background-image: url("../images/baconHero.jpeg");
+  text-align: center;
+}
+
+.hero .title {
+  color: white;
+  font-weight: bolder;
+  font-size: 75px;
+  text-shadow: 10px 2px 3px black;
+}
+
+.hero .subtitle {
+  color: white;
+  font-weight: bold;
+  font-size: xx-large;
+  text-shadow: 10px 2px 3px black;
+}
+
+#introBox {
+  padding: 40px;
+}
+
+.modal-card-title {
+  font-weight: bold;
+  align-items: center;
+  color: red;
+}
+
+.modal-card-body {
+  font-weight: bold;
+  align-items: center;
+  color: black;
+}
+
+.modal-card-foot {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+#userBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#textArea {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: x-large;
+  color: #7510f7;
+  font-weight: 600;
+  background-color: whitesmoke;
+}
+
+.box h1 {
+  font-weight: bolder;
+  font-size: xxx-large;
+  font-family: helvetica, Arial, sans-serif;
+  color: #7510f7;
+}
+
+.box h2 {
+  font-weight: bolder;
+  font-size: xx-large;
+  font-family: helvetica, Arial, sans-serif;
+  color: #7510f7;
+}
+
+.box h3 {
+  font-weight: bolder;
+  font-size: xxx-large;
+  font-family: helvetica, Arial, sans-serif;
+  color: black;
+}
+
+.box p {
+  font-weight: bolder;
+  font-size: x-large;
+}
+
+.hide {
+  display: none;
+}
+
+#characterAlert {
+  position: relative;
+}
