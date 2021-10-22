@@ -22,7 +22,7 @@ https://github.com/jamesseanwright/ron-swanson-quotes#ron-swanson-quotes-api_
 
 ## Website
 
- https://lindseykrause.github.io/project-one/
+ https://lindseykrause.github.io/Swanson-Dreams/
 
 ## Issues
 Some user input does not return a keyword
