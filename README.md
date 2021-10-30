@@ -1,3 +1,4 @@
+** Please note, the text analysis API is not currently functional.  I am waiting for a response from their development team to plan next steps. Thanks for your patience!
 # Swanson Dreams 
 ![Screen Shot 2021-04-28 at 9 34 01 PM](https://user-images.githubusercontent.com/79954805/116502847-7c936900-a869-11eb-8185-f3ec363990f9.png)
 
